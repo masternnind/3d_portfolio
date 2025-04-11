@@ -1,0 +1,17 @@
+/* 기본 리셋 및 배경 */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 스크롤 숨기기 */
+    background-color: #222; /* 어두운 배경 */
+}
+  
+/* 캔버스: 화면 전체에 고정 */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
