@@ -86,20 +86,21 @@ function animate() {
 animate();
 
 // --- 6. GSAP ScrollTrigger를 이용한 카메라 이동 경로 ---
-// 랜덤 좌표 생성 함수
-function generateRandomPoints(count, range) {
-  const points = [];
-  for (let i = 0; i < count; i++) {
-    const x = THREE.MathUtils.randFloat(-range, range);
-    const z = THREE.MathUtils.randFloat(-range, range);
-    points.push(new THREE.Vector3(x, 10, z)); // y값(높이)은 고정
-  }
-  return points;
-}
+// H자 경로 설정
+const cameraPathPoints = [
+  new THREE.Vector3(-120, 10, -120), // 시작점
+  new THREE.Vector3(-90, 10, -90),  // 첫 번째 물체 사이
+  new THREE.Vector3(-60, 10, -60),  // 두 번째 물체
+  new THREE.Vector3(-30, 10, 0),    // 중간 지점
+  new THREE.Vector3(0, 10, 120),    // 세 번째 물체
+  new THREE.Vector3(40, 10, 80),    // 네 번째 물체 사이
+  new THREE.Vector3(80, 10, 40),    // 네 번째 물체
+  new THREE.Vector3(120, 10, 0),    // 다섯 번째 물체
+  new THREE.Vector3(160, 10, -20),  // 여섯 번째 물체
+  new THREE.Vector3(100, 10, -100)  // 종료점
+];
 
-// 랜덤 경로 생성
-const randomPathPoints = generateRandomPoints(10, 140); // 10개의 랜덤 좌표, 범위는 -140 ~ 140
-const cameraPath = new THREE.CatmullRomCurve3(randomPathPoints, false);
+const cameraPath = new THREE.CatmullRomCurve3(cameraPathPoints, false);
 
 const tweenObj = { t: 0 };
 gsap.registerPlugin(ScrollTrigger);
